@@ -1,2 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <dimen name="text_view_padding">16dp</dimen>
+    <dimen name="default_margin">8dp</dimen>
+    <dimen name="margin_top">24dp</dimen>
+    <dimen name="fan_dimen">250dp</dimen>
+</resources>
+
+<!--The above code declares a styleable called DialView. The name is, by convention, the same name as the name of the class that defines
+the custom view (in this case, DialView). Although it's not strictly necessary to follow this convention, many popular code editors depend
+on this naming convention to provide statement completion.-->
