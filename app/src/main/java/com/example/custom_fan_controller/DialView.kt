@@ -13,8 +13,16 @@ private enum class FanSpeed(val label: Int) {
     OFF(R.string.fan_off),
     LOW(R.string.fan_low),
     MEDIUM(R.string.fan_medium),
-    HIGH(R.string.fan_high)
-}
+    HIGH(R.string.fan_high);
+
+        fun next() = when (this) {
+            OFF -> LOW
+            LOW -> MEDIUM
+            MEDIUM -> HIGH
+            HIGH -> OFF
+        }
+    }
+
 
 private const val RADIUS_OFFSET_LABEL = 30
 private const val RADIUS_OFFSET_INDICATOR = -35
@@ -39,6 +47,19 @@ class DialView @JvmOverloads constructor(
         typeface = Typeface.create( "", Typeface.BOLD)
     }
 
+    init {
+        isClickable = true
+    }
+
+    override fun performClick(): Boolean {
+        if (super.performClick()) return true
+
+        fanSpeed = fanSpeed.next()
+        contentDescription = resources.getString(fanSpeed.label)
+
+        invalidate()
+        return true
+    }
 
     //Calculate the size for the custom view's dial. Import kotlin.math.min
     override fun onSizeChanged(width: Int, height: Int, oldWidth: Int, oldHeight: Int) {
